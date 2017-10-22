@@ -1,0 +1,12 @@
+prototype(Neos.Neos:Page) {
+    head.imagesinarow = Neos.Fusion:Tag {
+        tagName = 'link'
+        attributes {
+            rel = 'stylesheet'
+            href = Neos.Fusion:ResourceUri {
+                path = 'resource://Jonnitto.ImagesInARow/Public/Main.css'
+            }
+        }
+        @if.hasElementOrIsBackendAndActive = ${(q(node).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof Jonnitto.ImagesInARow:Container]').is() || node.context.inBackend) && Configuration.setting('Jonnitto.ImagesInARow.includeCss')}
+    }
+}

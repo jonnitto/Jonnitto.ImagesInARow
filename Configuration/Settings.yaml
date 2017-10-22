@@ -2,6 +2,7 @@ Jonnitto:
   ImagesInARow:
     baseWidth: 1440
     container: false
+    includeCss: true
 
 Neos:
   Neos:

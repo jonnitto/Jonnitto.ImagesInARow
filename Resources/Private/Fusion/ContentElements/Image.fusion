@@ -1,24 +1,41 @@
 prototype(Jonnitto.ImagesInARow:Image) < prototype(Carbon.Image:Tag) {
-
+    asset = ${q(node).property('image')}
     relation = ${this.asset ? (this.asset.width / this.asset.height) : 1}
     maximumWidth = ${dimensionsWidth && this.asset ? Math.ceil(dimensionsWidth * this.relation) : false}
+    alternativeText = ${q(node).property('alternativeText')}
+    title = ${q(node).property('title')}
+    link = ${q(node).property('link')}
+    lightbox = ${q(node).property('lightbox')}
+    caption = ${q(node).property('caption')}
 
     @context.relation = ${this.relation}
 
-    attributes {
-        class = 'jonnitto-imagesinarow__image'
-        style >
-        style = Neos.Fusion:Array {
-            webkitBoxFlex = ${'-webkit-box-flex:' + relation + ';'}
-            webkitFlex = ${'-webkit-flex:' + relation + ' 1 0%;'}
-            msFlex = ${'-ms-flex:' + relation + ' 1 0%;'}
-            flex = ${'flex:' + relation + ' 1 0%;'}
+    prototype(Carbon.Link:Attributes) {
+        style = Jonnitto.ImagesInARow:Style
+    }
+
+    prototype(Carbon.Image:Lightbox.Attributes) {
+        style = Jonnitto.ImagesInARow:Style
+    }
+
+    @process {
+        wrap = Neos.Fusion:Tag {
+            @if.hasNoLinkOrLightox = ${node.context.live && (link || lightbox) ? false : true}
+            attributes.style = Jonnitto.ImagesInARow:Style
+            content = ${value}
+        }
+        contentElementWrapping {
+            expression = Neos.Neos:ContentElementWrapping
+            @position = 'end 999999999'
         }
     }
 
-    @process.contentElementWrapping {
-        expression = Neos.Neos:ContentElementWrapping
-        @position = 'end 999999999'
-    }
     @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\NodeWrappingHandler'
+}
+
+prototype(Jonnitto.ImagesInARow:Style) < prototype(Neos.Fusion:Array) {
+    webkitBoxFlex = ${'-webkit-box-flex:' + relation + ';'}
+    webkitFlex = ${'-webkit-flex:' + relation + ' 1 0%;'}
+    msFlex = ${'-ms-flex:' + relation + ' 1 0%;'}
+    flex = ${'flex:' + relation + ' 1 0%;'}
 }
