@@ -1,0 +1,7 @@
+/*!
+ * Jonnitto.ImagesInARow - created by Jon Uhlmann
+ * @build 2017-10-19 14:33
+ * @link https://github.com/jonnitto/Jonnitto.ImagesInARow
+ */
+.jonnitto-imagesinarow__row{margin:0 -3px;display:-webkit-box;display:-ms-flexbox;display:flex}.jonnitto-imagesinarow__row:after{content:"";display:block;clear:both}.jonnitto-imagesinarow__row .neos-empty-contentcollection-overlay{width:100%}.jonnitto-imagesinarow__row>*{padding:0 3px 6px;display:block;max-width:100%}.jonnitto-imagesinarow__row img{width:100%;max-width:none;height:auto;display:block;-o-object-fit:fill;object-fit:fill}@media (min-width:544px){.jonnitto-imagesinarow__row{margin:0 -4px}.jonnitto-imagesinarow__row>*{padding:0 4px 8px}}@media (min-width:768px){.jonnitto-imagesinarow__row{margin:0 -5px}.jonnitto-imagesinarow__row>*{padding:0 5px 10px}}@media (min-width:992px){.jonnitto-imagesinarow__row{margin:0 -7px}.jonnitto-imagesinarow__row>*{padding:0 7px 14px}}
+/*# sourceMappingURL=Main.css.map */

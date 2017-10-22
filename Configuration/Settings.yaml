@@ -1,0 +1,15 @@
+Jonnitto:
+  ImagesInARow:
+    baseWidth: 1440
+    container: false
+
+Neos:
+  Neos:
+    userInterface:
+      translation:
+        autoInclude:
+          Jonnitto.ImagesInARow:
+            - 'NodeTypes/*'
+    fusion:
+      autoInclude:
+        Jonnitto.ImagesInARow: true

@@ -1,0 +1,36 @@
+prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Fusion:Value) {
+    baseWidth = ${Configuration.setting('Jonnitto.ImagesInARow.baseWidth')}
+    container = ${Configuration.setting('Jonnitto.ImagesInARow.container')}
+
+    childCount = ${q(node).children('media').children().count()}
+    dimensionsWidth = ${this.childCount ? this.baseWidth / this.childCount : this.baseWidth}
+    @context {
+        container = ${this.container}
+        dimensionsWidth = ${this.dimensionsWidth}
+        baseClass = 'jonnitto-imagesinarow'
+    }
+
+    value = ContentCollection {
+        nodePath = 'media'
+        attributes.class = Neos.Fusion:RawArray {
+            nodetype = ${container ? false : baseClass}
+            row = ${baseClass + '__row'}
+        }
+    }
+
+    @process {
+        container = Neos.Fusion:Tag {
+            @if.needContainer = ${container}
+            attributes.class = Neos.Fusion:RawArray {
+                nodetype = ${baseClass}
+                container = ${Type.isString(container) ? container : false}
+            }
+            content = ${value}
+        }
+        contentElementWrapping {
+            expression = ContentElementWrapping
+            @position = 'end 999999999'
+        }
+    }
+    @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\NodeWrappingHandler'
+}

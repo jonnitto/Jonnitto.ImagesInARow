@@ -1,0 +1,33 @@
+{
+    "name": "jonnitto/imagesinarow",
+    "type": "typo3-flow-plugin",
+    "license": "MIT",
+    "description": "Put images nicley in a row",
+    "keywords": ["flow", "neos", "content", "row", "images"],
+    "authors": [
+        {
+            "name": "Jon Uhlmann",
+            "email": "me@jonnitto.ch",
+            "homepage": "https://twitter.com/jonnitto",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "neos/neos": "~3.0 || dev-master"
+    },
+    "archive": {
+        "exclude": [".editorconfig", ".gitignore", ".github", ".gitattributes", "gulp.json", "package.json", "CODE_OF_CONDUCT.md"]
+    },
+    "autoload": {
+        "psr-4": {
+            "Jonnitto\\ImagesInARow\\": "Classes"
+        }
+    },
+    "extra": {
+        "marketplace-account": "me@jonnitto.ch",
+        "installer-name": "Jonnitto.ImagesInARow",
+        "neos": {
+            "package-key": "Jonnitto.ImagesInARow"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+prototype(Jonnitto.ImagesInARow:Image) < prototype(Carbon.Image:Tag) {
+
+    relation = ${this.asset ? (this.asset.width / this.asset.height) : 1}
+    maximumWidth = ${dimensionsWidth && this.asset ? Math.ceil(dimensionsWidth * this.relation) : false}
+
+    @context.relation = ${this.relation}
+
+    attributes {
+        class = 'jonnitto-imagesinarow__image'
+        style >
+        style = Neos.Fusion:Array {
+            webkitBoxFlex = ${'-webkit-box-flex:' + relation + ';'}
+            webkitFlex = ${'-webkit-flex:' + relation + ' 1 0%;'}
+            msFlex = ${'-ms-flex:' + relation + ' 1 0%;'}
+            flex = ${'flex:' + relation + ' 1 0%;'}
+        }
+    }
+
+    @process.contentElementWrapping {
+        expression = Neos.Neos:ContentElementWrapping
+        @position = 'end 999999999'
+    }
+    @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\NodeWrappingHandler'
+}
