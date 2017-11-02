@@ -1,0 +1,62 @@
+$jonnitto-imagesinarow-gutter: 1vw !default;
+
+.jonnitto-imagesinarow__row .neos.neos.neos-empty-contentcollection-overlay {
+  $height: 41px;
+
+  margin: 0 auto;
+  padding: 0 10px;
+  width: calc(100% - #{$jonnitto-imagesinarow-gutter});
+  cursor: pointer;
+  height: $height;
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &::before,
+  &::after {
+    display: inline-block;
+    color: #222;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+    font-family: FontAwesome;
+    letter-spacing: 10px;
+  }
+
+  &::after {
+    margin: 0.9em 0 0;
+    content: "\f062";
+    animation: empty-jonnitto-imagesinarow 2.5s infinite 2s;
+  }
+
+  &::before {
+    line-height: $height;
+    content: "\f067 \f03e";
+  }
+
+  &:hover {
+    &::before,
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+
+@keyframes empty-jonnitto-imagesinarow {
+  0%,
+  25%,
+  100% {
+    transform: translateY(0);
+  }
+
+  5%,
+  15% {
+    transform: translateY(-4px);
+  }
+
+  10%,
+  20% {
+    transform: translateY(4px);
+  }
+}

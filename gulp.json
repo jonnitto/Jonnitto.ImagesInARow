@@ -7,7 +7,8 @@
     "root": {
         "base": "./Resources",
         "src": "Private",
-        "dest": "Public"
+        "dest": "Public",
+        "inlineAssets": true
     },
     "browserSync": {
         "enable": false
