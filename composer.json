@@ -14,7 +14,8 @@
     ],
     "require": {
         "neos/neos": "~3.0 || dev-master",
-        "carbon/image": "^1.0"
+        "carbon/image": "^1.0",
+        "carbon/filecontent": "^1.0"
     },
     "archive": {
         "exclude": [".editorconfig", ".gitignore", ".github", ".gitattributes", "gulp.json", "package.json", "CODE_OF_CONDUCT.md"]

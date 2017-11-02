@@ -3,12 +3,12 @@ prototype(Neos.Neos:Page) {
         @if.hasElementOrIsBackendAndActive = ${(q(node).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof Jonnitto.ImagesInARow:Container]').is() || node.context.inBackend) && Configuration.setting('Jonnitto.ImagesInARow.includeCss')}
         tagName = 'style'
         content = Neos.Fusion:Array {
-            main = Neos.Fusion:Template {
-                templatePath = 'resource://Jonnitto.ImagesInARow/Private/Templates/InlineAssets/Main.css'
+            main = Carbon.FileContent:FileContent {
+                path = 'resource://Jonnitto.ImagesInARow/Private/Templates/InlineAssets/Main.css'
             }
-            backend = Neos.Fusion:Template {
+            backend = Carbon.FileContent:FileContent {
                 @if.inBackend = ${node.context.inBackend}
-                templatePath = 'resource://Jonnitto.ImagesInARow/Private/Templates/InlineAssets/Backend.css'
+                path = 'resource://Jonnitto.ImagesInARow/Private/Templates/InlineAssets/Backend.css'
             }
         }
     }
