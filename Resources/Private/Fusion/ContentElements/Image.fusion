@@ -7,21 +7,30 @@ prototype(Jonnitto.ImagesInARow:Image) < prototype(Carbon.Image:Tag) {
     link = ${q(node).property('link')}
     lightbox = ${q(node).property('lightbox')}
     caption = ${q(node).property('caption')}
+    additionalClass = 'jonnitto-imagesinarow__image'
 
-    @context.relation = ${this.relation}
+    @context {
+        relation = ${this.relation}
+        additionalClass = ${this.additionalClass}
+    }
 
     prototype(Carbon.Link:Attributes) {
+        additionalClass = ${additionalClass}
         style = Jonnitto.ImagesInARow:Style
     }
 
     prototype(Carbon.Image:Lightbox.Attributes) {
+        additionalClass = ${additionalClass}
         style = Jonnitto.ImagesInARow:Style
     }
 
     @process {
         wrap = Neos.Fusion:Tag {
             @if.hasNoLinkOrLightox = ${node.context.live && (link || lightbox) ? false : true}
-            attributes.style = Jonnitto.ImagesInARow:Style
+            attributes {
+                class = ${additionalClass}
+                style = Jonnitto.ImagesInARow:Style
+            }
             content = ${value}
         }
         contentElementWrapping {

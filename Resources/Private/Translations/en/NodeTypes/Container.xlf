@@ -5,6 +5,9 @@
             <trans-unit id="ui.label" xml:space="preserve">
                 <source>Images in a row</source>
             </trans-unit>
+            <trans-unit id="numberOfImages" xml:space="preserve">
+                <source>Number of images</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

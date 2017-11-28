@@ -12,7 +12,7 @@ $jonnitto-imagesinarow-gutter: 1vw !default;
     clear: both;
   }
 
-  > * {
+  > .jonnitto-imagesinarow__image {
     padding: 0 $half $jonnitto-imagesinarow-gutter;
     display: block;
     max-width: 100%;

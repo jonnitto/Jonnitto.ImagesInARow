@@ -6,6 +6,28 @@
     label: i18n
     icon: icon-picture
     inlineEditable: true
+    creationDialog:
+      elements:
+        numberOfImages:
+          type: integer
+          ui:
+            label: 'Jonnitto.ImagesInARow:NodeTypes.Container:numberOfImages'
+            editor: 'Neos.Neos/Inspector/Editors/TextFieldEditor'
+          validation:
+            'Neos.Neos/Validation/IntegerValidator': true
+            'Neos.Neos/Validation/NumberRangeValidator':
+              minimum: 2
+              maximum: 99
+  options:
+    template:
+      childNodes:
+        mediaContentCollection:
+          name: 'media'
+          childNodes:
+            multipleImageNodes:
+              type: 'Jonnitto.ImagesInARow:Image'
+              when: '${data.numberOfImages}'
+              withItems: '${Array.range(1, data.numberOfImages)}'
   childNodes:
     media:
       type: 'Neos.Neos:ContentCollection'
