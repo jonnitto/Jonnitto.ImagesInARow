@@ -6,7 +6,8 @@ Jonnitto.ImagesInARow
 [![License](https://poser.pugx.org/jonnitto/imagesinarow/license)](https://packagist.org/packages/jonnitto/imagesinarow)
 
 
-Put images nicley in a row
+Put images nicley in a row:  
+![Images in a row](https://user-images.githubusercontent.com/4510166/33304401-e0986e48-d408-11e7-86c4-02bcd24d74cd.jpg)
 
 Installation
 ------------
