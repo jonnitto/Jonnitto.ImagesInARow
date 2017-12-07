@@ -1,9 +1,14 @@
-Jonnitto.ImagesInARow
-=====================
-
 [![Latest Stable Version](https://poser.pugx.org/jonnitto/imagesinarow/v/stable)](https://packagist.org/packages/jonnitto/imagesinarow)
 [![Total Downloads](https://poser.pugx.org/jonnitto/imagesinarow/downloads)](https://packagist.org/packages/jonnitto/imagesinarow)
 [![License](https://poser.pugx.org/jonnitto/imagesinarow/license)](https://packagist.org/packages/jonnitto/imagesinarow)
+[![GitHub forks](https://img.shields.io/github/forks/jonnitto/Jonnitto.ImagesInARow.svg?style=social&label=Fork)](https://github.com/jonnitto/Jonnitto.ImagesInARow/fork)
+[![GitHub stars](https://img.shields.io/github/stars/jonnitto/Jonnitto.ImagesInARow.svg?style=social&label=Stars)](https://github.com/jonnitto/Jonnitto.ImagesInARow/stargazers)
+[![GitHub watchers](https://img.shields.io/github/watchers/jonnitto/Jonnitto.ImagesInARow.svg?style=social&label=Watch)](https://github.com/jonnitto/Jonnitto.ImagesInARow/subscription)
+[![GitHub followers](https://img.shields.io/github/followers/jonnitto.svg?style=social&label=Follow)](https://github.com/jonnitto/followers)
+[![Follow Jon on Twitter](https://img.shields.io/twitter/follow/jonnitto.svg?style=social&label=Follow)](https://twitter.com/jonnitto)
+
+Jonnitto.ImagesInARow
+=====================
 
 
 Put images nicley in a row:  
