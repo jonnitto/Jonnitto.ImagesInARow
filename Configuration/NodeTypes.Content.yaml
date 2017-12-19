@@ -8,26 +8,25 @@
     inlineEditable: true
     creationDialog:
       elements:
-        numberOfImages:
-          type: integer
+        images:
+          type: array<Neos\Media\Domain\Model\Asset>
           ui:
-            label: 'Jonnitto.ImagesInARow:NodeTypes.Container:numberOfImages'
-            editor: 'Neos.Neos/Inspector/Editors/TextFieldEditor'
-          validation:
-            'Neos.Neos/Validation/IntegerValidator': true
-            'Neos.Neos/Validation/NumberRangeValidator':
-              minimum: 2
-              maximum: 99
+            label: 'Jonnitto.ImagesInARow:NodeTypes.Container:images'
+            editor: 'Neos.Neos/Inspector/Editors/AssetEditor'
+            editorOptions:
+              multiple: true
   options:
     template:
       childNodes:
         mediaContentCollection:
           name: 'media'
           childNodes:
-            multipleImageNodes:
+            image:
+              name: '${"image-" + key}'
               type: 'Jonnitto.ImagesInARow:Image'
-              when: '${data.numberOfImages}'
-              withItems: '${Array.range(1, data.numberOfImages)}'
+              properties:
+                image: '${item}'
+              withItems: '${data.images}'
   childNodes:
     media:
       type: 'Neos.Neos:ContentCollection'
