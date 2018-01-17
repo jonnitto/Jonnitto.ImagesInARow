@@ -15,6 +15,7 @@
     "require": {
         "neos/neos": "~3.0 || dev-master",
         "flowpack/nodetemplates": "^0.3",
+        "carbon/condition": "^1.0",
         "carbon/image": "^1.0",
         "carbon/filecontent": "^1.0"
     },
