@@ -1,6 +1,6 @@
 prototype(Jonnitto.ImagesInARow:Image) < prototype(Carbon.Image:Tag) {
     asset = ${q(node).property('image')}
-    relation = ${this.asset ? (this.asset.width / this.asset.height) : 1}
+    relation = ${this.asset && this.asset.height ? (this.asset.width / this.asset.height) : 1}
     maximumWidth = ${dimensionsWidth && this.asset ? Math.ceil(dimensionsWidth * this.relation) : false}
     alternativeText = ${q(node).property('alternativeText')}
     title = ${q(node).property('title')}
