@@ -16,13 +16,13 @@ prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Fusion:Tag) {
         container = ${Type.isString(container) ? container : false}
     }
 
-    content = ContentCollection {
+    content = Neos.Neos:ContentCollection {
         nodePath = 'media'
         attributes.class = ${baseClass + '__row'}
     }
 
     @process.contentElementWrapping {
-        expression = ContentElementWrapping
+        expression = Neos.Neos:ContentElementWrapping
         @position = 'end 999999999'
     }
     @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\NodeWrappingHandler'
