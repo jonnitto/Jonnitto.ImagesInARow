@@ -17,7 +17,7 @@
         "flowpack/nodetemplates": "^1.0",
         "carbon/condition": "^1.0",
         "carbon/image": "^1.0",
-        "carbon/filecontent": "^1.0"
+        "carbon/eel": "^1.1"
     },
     "archive": {
         "exclude": [".editorconfig", ".gitignore", ".github", ".gitattributes", "gulp.json", "package.json", "CODE_OF_CONDUCT.md"]

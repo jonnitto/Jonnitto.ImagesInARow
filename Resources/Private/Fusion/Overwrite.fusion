@@ -2,13 +2,8 @@ prototype(Neos.Neos:Page) {
     head.imagesinarow = Neos.Fusion:Tag {
         tagName = 'style'
         content = Neos.Fusion:Array {
-            main = Carbon.FileContent:FileContent {
-                path = 'resource://Jonnitto.ImagesInARow/Private/Templates/InlineAssets/Main.css'
-            }
-            backend = Carbon.FileContent:FileContent {
-                @if.inBackend = ${node.context.inBackend}
-                path = 'resource://Jonnitto.ImagesInARow/Private/Templates/InlineAssets/Backend.css'
-            }
+            main = ${Carbon.FileContent.path('Jonnitto.ImagesInARow/Private/Templates/InlineAssets/Main.css')}
+            backend = ${node.context.inBackend ? Carbon.FileContent.path('Jonnitto.ImagesInARow/Private/Templates/InlineAssets/Backend.css') : ''}
         }
         @if.render = Carbon.Condition:Case {
             enabled = ${Configuration.setting('Jonnitto.ImagesInARow.includeCss')}
