@@ -1,7 +1,7 @@
 prototype(Jonnitto.ImagesInARow:Image) < prototype(Carbon.Image:Tag) {
     asset = ${q(node).property('image')}
-    relation = ${this.asset && this.asset.height ? (this.asset.width / this.asset.height) : 1}
-    maximumWidth = ${dimensionsWidth && this.asset ? Math.ceil(dimensionsWidth * this.relation) : false}
+    ratio = ${this.asset && this.asset.height ? (this.asset.width / this.asset.height) : 1}
+    maximumWidth = ${dimensionsWidth && this.asset ? Math.ceil(dimensionsWidth * this.ratio) : false}
     alternativeText = ${q(node).property('alternativeText')}
     title = ${q(node).property('title')}
     link = ${q(node).property('link')}
@@ -12,19 +12,19 @@ prototype(Jonnitto.ImagesInARow:Image) < prototype(Carbon.Image:Tag) {
     contentElement = true
 
     @context {
-        relation = ${this.relation}
+        ratio = ${this.ratio}
         additionalClass = ${this.additionalClass}
         contentElement = ${this.contentElement}
     }
 
     prototype(Carbon.Link:Attributes) {
         additionalClass = ${additionalClass}
-        style = ${'flex:' + relation + ' 1 0%;'}
+        style = ${'flex:' + ratio + ' 1 0%;'}
     }
 
     prototype(Carbon.Image:Lightbox.Attributes) {
         additionalClass = ${additionalClass}
-        style = ${'flex:' + relation + ' 1 0%;'}
+        style = ${'flex:' + ratio + ' 1 0%;'}
     }
 
     @process {
@@ -32,7 +32,7 @@ prototype(Jonnitto.ImagesInARow:Image) < prototype(Carbon.Image:Tag) {
             @if.hasNoLinkOrLightox = ${node.context.live && (link || lightbox) ? false : true}
             attributes {
                 class = ${additionalClass}
-                style = ${'flex:' + relation + ' 1 0%;'}
+                style = ${'flex:' + ratio + ' 1 0%;'}
             }
             content = ${value}
         }
