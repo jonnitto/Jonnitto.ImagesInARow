@@ -1,7 +1,6 @@
 /*!
  * Jonnitto.ImagesInARow - created by Jon Uhlmann
- * @build 2017-11-28 06:39
+ * @build 2018-08-16
  * @link https://github.com/jonnitto/Jonnitto.ImagesInARow
  */
-.jonnitto-imagesinarow__row{margin:0 -.5vw;display:-webkit-box;display:-ms-flexbox;display:flex}.jonnitto-imagesinarow__row:after{content:"";display:block;clear:both}.jonnitto-imagesinarow__row>.jonnitto-imagesinarow__image{padding:0 .5vw 1vw;display:block;max-width:100%}.jonnitto-imagesinarow__row img{width:100%;max-width:none;height:auto;display:block;-o-object-fit:fill;object-fit:fill}
-/*# sourceMappingURL=Main.css.map */
+ .jonnitto-imagesinarow__row{display:flex;margin:0 -.5vw}.jonnitto-imagesinarow__row>.jonnitto-imagesinarow__image{display:block;max-width:100%;padding:.5vw}.jonnitto-imagesinarow__row img{-o-object-fit:fill;display:block;height:auto;max-width:none;object-fit:fill;width:100%}

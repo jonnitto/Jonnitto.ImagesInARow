@@ -9,19 +9,22 @@ prototype(Jonnitto.ImagesInARow:Image) < prototype(Carbon.Image:Tag) {
     caption = ${q(node).property('caption')}
     additionalClass = 'jonnitto-imagesinarow__image'
 
+    contentElement = true
+
     @context {
         relation = ${this.relation}
         additionalClass = ${this.additionalClass}
+        contentElement = ${this.contentElement}
     }
 
     prototype(Carbon.Link:Attributes) {
         additionalClass = ${additionalClass}
-        style = Jonnitto.ImagesInARow:Style
+        style = ${'flex:' + relation + ' 1 0%;'}
     }
 
     prototype(Carbon.Image:Lightbox.Attributes) {
         additionalClass = ${additionalClass}
-        style = Jonnitto.ImagesInARow:Style
+        style = ${'flex:' + relation + ' 1 0%;'}
     }
 
     @process {
@@ -29,22 +32,16 @@ prototype(Jonnitto.ImagesInARow:Image) < prototype(Carbon.Image:Tag) {
             @if.hasNoLinkOrLightox = ${node.context.live && (link || lightbox) ? false : true}
             attributes {
                 class = ${additionalClass}
-                style = Jonnitto.ImagesInARow:Style
+                style = ${'flex:' + relation + ' 1 0%;'}
             }
             content = ${value}
         }
         contentElementWrapping {
+            @if.contentElementWrapping = ${contentElement}
             expression = Neos.Neos:ContentElementWrapping
             @position = 'end 999999999'
         }
     }
 
     @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\NodeWrappingHandler'
-}
-
-prototype(Jonnitto.ImagesInARow:Style) < prototype(Neos.Fusion:Array) {
-    webkitBoxFlex = ${'-webkit-box-flex:' + relation + ';'}
-    webkitFlex = ${'-webkit-flex:' + relation + ' 1 0%;'}
-    msFlex = ${'-ms-flex:' + relation + ' 1 0%;'}
-    flex = ${'flex:' + relation + ' 1 0%;'}
 }

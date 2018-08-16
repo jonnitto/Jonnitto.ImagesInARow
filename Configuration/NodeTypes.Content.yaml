@@ -1,10 +1,11 @@
 'Jonnitto.ImagesInARow:Container':
   superTypes:
     'Neos.Neos:Content': true
-  label: "${(q(node).children('media').children().count() ? q(node).children('media').children().count() + ' ' : '') + (I18n.translate(node.nodeType.label) || node.nodeType.name)}"
+    'Neos.Neos:ContentCollection': true
+  label: "${(q(node).children().count() ? q(node).children().count() + ' ' : '') + (I18n.translate(node.nodeType.label) || node.nodeType.name)}"
   ui:
     label: i18n
-    icon: icon-picture
+    icon: 'far fa-images'
     inlineEditable: true
     creationDialog:
       elements:
@@ -18,22 +19,16 @@
   options:
     template:
       childNodes:
-        mediaContentCollection:
-          name: 'media'
-          childNodes:
-            image:
-              name: '${"image-" + key}'
-              type: 'Jonnitto.ImagesInARow:Image'
-              properties:
-                image: '${item}'
-              withItems: '${data.images}'
-  childNodes:
-    media:
-      type: 'Neos.Neos:ContentCollection'
-      constraints:
-        nodeTypes:
-          '*': false
-          'Jonnitto.ImagesInARow:Image': true
+        image:
+          name: '${"image-" + key}'
+          type: 'Jonnitto.ImagesInARow:Image'
+          properties:
+            image: '${item}'
+          withItems: '${data.images}'
+  constraints:
+    nodeTypes:
+      '*': false
+      'Jonnitto.ImagesInARow:Image': true
 
 'Neos.Neos:ContentCollection':
   constraints:
@@ -52,7 +47,7 @@
     'Carbon.Image:BackendLabel': true
   ui:
     label: i18n
-    icon: icon-picture
+    icon: 'far fa-image'
     inlineEditable: true
   properties:
     lightbox:

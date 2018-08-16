@@ -1,44 +1,33 @@
-$jonnitto-imagesinarow-gutter: 1vw !default;
-
-.jonnitto-imagesinarow__row .neos.neos.neos-empty-contentcollection-overlay {
-  $height: 41px;
-
-  margin: 0 auto;
-  padding: 0 10px;
-  width: calc(100% - #{$jonnitto-imagesinarow-gutter});
+.jonnitto-imagesinarow__row:empty {
   cursor: pointer;
-  height: $height;
-  overflow: hidden;
-  text-align: right;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  margin: x 0;
 
-  &::before,
   &::after {
-    display: inline-block;
-    color: #222;
-    opacity: 0.5;
+    display: block;
     transition: opacity 0.2s ease;
-    font-family: FontAwesome;
-    letter-spacing: 10px;
+    content: "";
+    background: inline("img.svg") center no-repeat;
+    margin-right: 1em;
+    size: 2em;
+    opacity: 0.5;
   }
 
-  &::after {
-    margin: 0.9em 0 0;
-    content: "\f062";
-    animation: empty-jonnitto-imagesinarow 2.5s infinite 2s;
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+.jonnitto-imagesinarow__image {
+  outline-offset: 0.1vw;
+
+  &[class*="style__markActiveNodeAsFocused"] {
+    z-index: 1;
   }
 
-  &::before {
-    line-height: $height;
-    content: "\f067 \f03e";
-  }
-
-  &:hover {
-    &::before,
-    &::after {
-      opacity: 1;
-    }
+  &[class*="style__markHoveredNodeAsHovered"] {
+    z-index: 2;
   }
 }
 

@@ -1,29 +1,41 @@
-prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Fusion:Tag) {
+prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Neos:ContentCollection) {
     baseWidth = ${Configuration.setting('Jonnitto.ImagesInARow.baseWidth')}
     container = ${Configuration.setting('Jonnitto.ImagesInARow.container')}
+    nodePath = ''
 
     childCount = ${q(node).children('media').children().count()}
     dimensionsWidth = ${this.childCount ? this.baseWidth / this.childCount : this.baseWidth}
 
+    contentElement = true
+    namespace = 'jonnitto-imagesinarow'
+
     @context {
         container = ${this.container}
         dimensionsWidth = ${this.dimensionsWidth}
-        baseClass = 'jonnitto-imagesinarow'
+        contentElement = ${this.contentElement}
+        namespace = ${this.namespace}
     }
 
     attributes.class = Neos.Fusion:RawArray {
-        nodetype = ${baseClass}
-        container = ${Type.isString(container) ? container : false}
+        namespace = ${container || node.context.inBackend ? false : namespace}
+        row = ${namespace + '__row'}
     }
 
-    content = Neos.Neos:ContentCollection {
-        nodePath = 'media'
-        attributes.class = ${baseClass + '__row'}
-    }
-
-    @process.contentElementWrapping {
-        expression = Neos.Neos:ContentElementWrapping
-        @position = 'end 999999999'
+    @process {
+        containerWrapping = Neos.Fusion:Tag {
+            @if.needWrapping = ${container || node.context.inBackend}
+            attributes.class = Neos.Fusion:RawArray {
+                namespace = ${namespace}
+                imagesinarow = ${container ? namespace + '__container' : false}
+                container = ${Type.isString(container) ? container : false}
+            }
+            content = ${value}
+        }
+        contentElementWrapping {
+            @if.contentElementWrapping = ${contentElement}
+            expression = Neos.Neos:ContentElementWrapping
+            @position = 'end 999999999'
+        }
     }
     @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\NodeWrappingHandler'
 }

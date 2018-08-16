@@ -6,14 +6,8 @@ $jonnitto-imagesinarow-gutter: 1vw !default;
   margin: 0 -#{$half};
   display: flex;
 
-  &::after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-
   > .jonnitto-imagesinarow__image {
-    padding: 0 $half $jonnitto-imagesinarow-gutter;
+    padding: $half;
     display: block;
     max-width: 100%;
   }
