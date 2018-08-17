@@ -25,6 +25,7 @@
           properties:
             image: '${item}'
           withItems: '${data.images}'
+          when: '${data.images}'
   constraints:
     nodeTypes:
       '*': false
