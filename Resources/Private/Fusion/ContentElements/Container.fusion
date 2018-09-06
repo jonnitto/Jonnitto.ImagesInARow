@@ -3,7 +3,7 @@ prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Neos:ContentCollecti
     container = ${Configuration.setting('Jonnitto.ImagesInARow.container')}
     nodePath = ''
 
-    childCount = ${q(node).children('media').children().count()}
+    childCount = ${q(node).children('[instanceof Jonnitto.ImagesInARow:Image]').count()}
     dimensionsWidth = ${this.childCount ? this.baseWidth / this.childCount : this.baseWidth}
 
     contentElement = true
