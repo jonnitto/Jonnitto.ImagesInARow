@@ -16,6 +16,9 @@
             editor: 'Neos.Neos/Inspector/Editors/AssetEditor'
             editorOptions:
               multiple: true
+              accept: 'image/*'
+              features:
+                mediaBrowser: false
   options:
     template:
       childNodes:
