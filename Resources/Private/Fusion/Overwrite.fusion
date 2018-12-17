@@ -3,10 +3,10 @@ prototype(Neos.Neos:Page) {
         tagName = 'style'
         content = Neos.Fusion:Array {
             main = ${Carbon.FileContent.path('Jonnitto.ImagesInARow/Private/Templates/InlineAssets/Main.css')}
+            main.@if.enabled = ${Configuration.setting('Jonnitto.ImagesInARow.includeCss')}
             backend = ${node.context.inBackend ? Carbon.FileContent.path('Jonnitto.ImagesInARow/Private/Templates/InlineAssets/Backend.css') : ''}
         }
         @if.render = Carbon.Condition:Case {
-            enabled = ${Configuration.setting('Jonnitto.ImagesInARow.includeCss')}
             content.nodeType = 'Jonnitto.ImagesInARow:Container'
         }
     }
