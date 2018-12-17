@@ -1,4 +1,4 @@
-prototype(Jonnitto.ImagesInARow:Image) < prototype(Carbon.Image:Tag) {
+prototype(Jonnitto.ImagesInARow:Image) < prototype(Neos.Neos:ContentComponent) {
     asset = ${q(node).property('image')}
     ratio = ${this.asset && this.asset.height ? (this.asset.width / this.asset.height) : 1}
     maximumWidth = ${dimensionsWidth && this.asset ? Math.ceil(dimensionsWidth * this.ratio) : false}
@@ -7,41 +7,18 @@ prototype(Jonnitto.ImagesInARow:Image) < prototype(Carbon.Image:Tag) {
     link = ${q(node).property('link')}
     lightbox = ${q(node).property('lightbox')}
     caption = ${q(node).property('caption')}
-    additionalClass = 'jonnitto-imagesinarow__image'
+    hasLinkOrLightox = ${node.context.live && (props.link || props.lightbox)}
 
-    contentElement = true
-
-    @context {
-        ratio = ${this.ratio}
-        additionalClass = ${this.additionalClass}
-        contentElement = ${this.contentElement}
-    }
-
-    prototype(Carbon.Link:Attributes) {
-        additionalClass = ${additionalClass}
-        style = ${'flex:' + ratio + ' 1 0%;'}
-    }
-
-    prototype(Carbon.Image:Lightbox.Attributes) {
-        additionalClass = ${additionalClass}
-        style = ${'flex:' + ratio + ' 1 0%;'}
-    }
-
-    @process {
-        wrap = Neos.Fusion:Tag {
-            @if.hasNoLinkOrLightox = ${node.context.live && (link || lightbox) ? false : true}
-            attributes {
-                class = ${additionalClass}
-                style = ${'flex:' + ratio + ' 1 0%;'}
+    renderer = Neos.Fusion:Augmenter {
+        class = 'jonnitto-imagesinarow__image'
+        style = ${'flex:' + props.ratio + ' 1 0%;'}
+        content = Carbon.Image:Tag {
+            @apply.props = ${props}
+            @process.wrap = Neos.Fusion:Tag {
+                @if.hasNoLinkOrLightox = ${node.context.live && (props.link || props.lightbox) ? false : true}
+                content = ${value}
             }
-            content = ${value}
-        }
-        contentElementWrapping {
-            @if.contentElementWrapping = ${contentElement}
-            expression = Neos.Neos:ContentElementWrapping
-            @position = 'end 999999999'
         }
     }
 
-    @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\NodeWrappingHandler'
 }
