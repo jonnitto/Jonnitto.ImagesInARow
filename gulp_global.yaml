@@ -1,0 +1,25 @@
+info:
+  author: 'Jon Uhlmann'
+  homepage: 'https://github.com/jonnitto/Jonnitto.ImagesInARow'
+  package: 'Jonnitto.ImagesInARow'
+
+global:
+  mergeConfigFromPackages: false
+  notifications: true
+  browserSync:
+    enable: false
+
+root:
+  base: './'
+
+tasks:
+  fonts: false
+  images: false
+  optimizeImages: false
+  static: false
+  svgSprite: false
+  js : false
+  css:
+    dest: ''
+  pipeline:
+    - css
