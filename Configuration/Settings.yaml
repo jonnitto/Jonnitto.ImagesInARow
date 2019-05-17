@@ -14,3 +14,19 @@ Neos:
     fusion:
       autoInclude:
         Jonnitto.ImagesInARow: true
+
+Carbon:
+  IncludeAssets:
+    Packages:
+      'Jonnitto.ImagesInARow':
+        Package: 'Jonnitto.ImagesInARow'
+        ConditionPrototype: 'Jonnitto.ImagesInARow:IncludeAssets'
+        Path:
+          Inline:
+            CSS: 'Private/Templates/InlineAssets'
+          File:
+            CSS: 'Public'
+        General:
+          Head: Main.Inline.css[inline]
+        Backend:
+          Head: Backend.Inline.css[inline]
