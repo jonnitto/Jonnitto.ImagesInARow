@@ -8,6 +8,9 @@
             <trans-unit id="images" xml:space="preserve">
                 <source>Bilder</source>
             </trans-unit>
+            <trans-unit id="noImages" xml:space="preserve">
+                <source>Bitte fügen Sie Bilder ein</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

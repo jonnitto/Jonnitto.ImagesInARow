@@ -16,9 +16,12 @@ prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Neos:ContentCollecti
         namespace = ${this.namespace}
     }
 
-    attributes.class = Neos.Fusion:RawArray {
-        namespace = ${container || node.context.inBackend ? false : namespace}
-        row = ${namespace + '__row'}
+    attributes{
+        data-warning = ${node.context.inBackend ? Translation.translate('noImages', 'Please add some images', [], 'NodeTypes/Container', 'Jonnitto.ImagesInARow') : false}
+        class = Neos.Fusion:RawArray {
+            namespace = ${container || node.context.inBackend ? false : namespace}
+            row = ${BEM.string(namespace, 'row')}
+        }
     }
 
     @process {
@@ -26,7 +29,7 @@ prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Neos:ContentCollecti
             @if.needWrapping = ${container || node.context.inBackend}
             attributes.class = Neos.Fusion:RawArray {
                 namespace = ${namespace}
-                imagesinarow = ${container ? namespace + '__container' : false}
+                imagesinarow = ${container ? BEM.string(namespace, 'container') : false}
                 container = ${Type.isString(container) ? container : false}
             }
             content = ${value}
