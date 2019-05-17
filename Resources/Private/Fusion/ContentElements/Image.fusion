@@ -20,5 +20,4 @@ prototype(Jonnitto.ImagesInARow:Image) < prototype(Neos.Neos:ContentComponent) {
             }
         }
     }
-
 }
