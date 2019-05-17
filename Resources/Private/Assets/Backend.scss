@@ -1,21 +1,33 @@
-.jonnitto-imagesinarow__row:empty {
+.jonnitto-imagesinarow__row.jonnitto-imagesinarow__row:empty {
   cursor: pointer;
   justify-content: flex-end;
   align-items: center;
   margin: x 0;
+  display: flex;
 
+  &::before,
   &::after {
     display: block;
-    transition: opacity 0.2s ease;
-    content: "";
-    background: inline("img.svg") center no-repeat;
     margin-right: 1em;
-    size: 2em;
     opacity: 0.5;
+    transition: opacity 0.2s ease;
   }
 
-  &:hover::after {
-    opacity: 1;
+  &::before {
+    content: attr(data-warning);
+  }
+
+  &::after {
+    content: "";
+    background: inline("img.svg") center no-repeat;
+    size: 2em;
+  }
+
+  &:hover {
+    &::before,
+    &::after {
+      opacity: 1;
+    }
   }
 }
 
