@@ -1,0 +1,14 @@
+'Jonnitto.ImagesInARow:Container':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+    'Jonnitto.ImagesInARow:Mixin.CreationDialog.Assets': true
+  label: "${(q(node).children().count() ? q(node).children().count() + ' ' : '') + (I18n.translate(node.nodeType.label) || node.nodeType.name)}"
+  ui:
+    label: i18n
+    icon: 'far fa-images'
+    inlineEditable: true
+  constraints:
+    nodeTypes:
+      '*': false
+      'Jonnitto.ImagesInARow:Image': true

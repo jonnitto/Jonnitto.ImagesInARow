@@ -1,0 +1,17 @@
+'Jonnitto.ImagesInARow:Image':
+  superTypes:
+    'Carbon.Image:Image': true
+    'Neos.Neos:Content': true
+    'Carbon.Image:Title': true
+    'Carbon.Image:AlternativeText': true
+    'Carbon.Image:Lightbox': true
+    'Carbon.Image:Caption': true
+    'Carbon.Image:Link': true
+    'Carbon.Image:BackendLabel': true
+  ui:
+    label: i18n
+    icon: 'far fa-image'
+    inlineEditable: true
+  properties:
+    lightbox:
+      defaultValue: true

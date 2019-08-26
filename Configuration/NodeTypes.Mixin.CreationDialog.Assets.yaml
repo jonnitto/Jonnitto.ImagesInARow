@@ -1,0 +1,24 @@
+'Jonnitto.ImagesInARow:Mixin.CreationDialog.Assets':
+  abstract: true
+  ui:
+    creationDialog:
+      elements:
+        images:
+          type: array<Neos\Media\Domain\Model\Asset>
+          ui:
+            label: 'Jonnitto.ImagesInARow:NodeTypes.Container:images'
+            editor: 'Neos.Neos/Inspector/Editors/AssetEditor'
+            editorOptions:
+              multiple: true
+              accept: 'image/*'
+              features:
+                mediaBrowser: false
+  options:
+    template:
+      childNodes:
+        image:
+          type: 'Jonnitto.ImagesInARow:Image'
+          properties:
+            image: '${item}'
+          withItems: '${data.images}'
+          when: '${data.images}'

@@ -1,0 +1,4 @@
+'Neos.Neos:ContentCollection':
+  constraints:
+    nodeTypes:
+      'Jonnitto.ImagesInARow:Image': false
