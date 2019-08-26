@@ -1,0 +1,17 @@
+'Jonnitto.ImagesInARow:Mixin.CreationDialog.Items':
+  abstract: true
+  ui:
+    creationDialog:
+      elements:
+        items:
+          type: integer
+          ui:
+            label: 'Jonnitto.ImagesInARow:NodeTypes.Container:items'
+            editor: Neos.Neos/Inspector/Editors/TextFieldEditor
+  options:
+    template:
+      childNodes:
+        items:
+          type: 'Jonnitto.ImagesInARow:Image'
+          when: '${data.items && data.items > 0}'
+          withItems: '${Array.range(1, data.items)}'
