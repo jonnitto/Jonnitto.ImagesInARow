@@ -41,4 +41,13 @@ prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Neos:ContentCollecti
         }
     }
     @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\NodeWrappingHandler'
+    
+    @cache {
+        mode = 'cached'
+        entryIdentifier.node = ${node}
+        entryTags {
+            1 = ${Neos.Caching.nodeTag(node)}
+            2 = ${Neos.Caching.descendantOfTag(node)}
+        }
+    }
 }
