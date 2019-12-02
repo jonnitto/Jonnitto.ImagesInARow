@@ -1,7 +1,9 @@
 prototype(Jonnitto.ImagesInARow:Image) < prototype(Neos.Neos:ContentComponent) {
     asset = ${q(node).property('image')}
     ratio = ${this.asset && this.asset.height ? (this.asset.width / this.asset.height) : 1}
-    maximumWidth = ${dimensionsWidth && this.asset ? Math.ceil(dimensionsWidth * this.ratio) : false}
+    baseMaxWith = ${Configuration.setting('Jonnitto.ImagesInARow.baseWidth')}
+    maximumWidth = ${dimensionsWidth && this.asset ? Math.ceil(dimensionsWidth * this.ratio) : this.baseMaxWith}
+    maximumWidth.@process.maximumWidthFromBase = ${value > this.baseMaxWith ? this.baseMaxWith : value}
     alternativeText = ${q(node).property('alternativeText')}
     title = ${q(node).property('title')}
     link = ${q(node).property('link')}
