@@ -1,7 +1,7 @@
 {
     "name": "jonnitto/imagesinarow",
     "type": "neos-plugin",
-    "license": "MIT",
+    "license": "GPL-3.0-or-later",
     "description": "Put images nicley in a row",
     "keywords": ["flow", "neos", "content", "row", "images"],
     "authors": [
