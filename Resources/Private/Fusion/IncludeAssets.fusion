@@ -1,4 +1,0 @@
-prototype(Jonnitto.ImagesInARow:IncludeAssets) < prototype(Carbon.IncludeAssets:Case) {
-    @if.enabled = ${Configuration.setting('Jonnitto.ImagesInARow.includeCss')}
-    content = 'Jonnitto.ImagesInARow:Container'
-}
