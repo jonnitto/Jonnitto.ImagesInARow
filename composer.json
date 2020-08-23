@@ -13,30 +13,11 @@
         }
     ],
     "require": {
-        "neos/neos": "~4.2 || ~5.0",
+        "neos/neos": "~4.3 || ~5.0",
         "flowpack/nodetemplates": "^1.0",
-        "carbon/eel": "^1.5 || dev-master",
-        "carbon/image": "^1.0 || ^2.0 || dev-master",
+        "carbon/eel": "^1.7 || dev-master",
+        "carbon/image": "^3.0 || dev-master",
         "carbon/includeassets": "^3.5 || ^4.0 || dev-master"
-    },
-    "archive": {
-        "exclude": [
-            ".editorconfig",
-            ".eslintignore",
-            ".eslintrc",
-            ".gitattributes",
-            ".gitignore",
-            ".github",
-            ".jshintrc",
-            ".nvmrc",
-            ".prettierignore",
-            ".prettierrc",
-            ".stylelintrc",
-            ".yarnclean",
-            "CODE_OF_CONDUCT.md",
-            "gulp_global.yaml",
-            "package.json"
-        ]
     },
     "autoload": {
         "psr-4": {
