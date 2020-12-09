@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "neos/neos": "~4.2 || ~5.0",
+        "neos/neos": "~4.2 || ~5.0 || ~7.0",
         "flowpack/nodetemplates": "^1.0",
         "carbon/eel": "^1.5 || dev-master",
         "carbon/image": "^1.0 || ^2.0 || ^3.0 || dev-master",
