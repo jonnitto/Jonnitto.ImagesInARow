@@ -19,6 +19,20 @@
         "carbon/image": "^3.0 || dev-master",
         "carbon/includeassets": "^3.5 || ^4.0 || ^5.0 || dev-master"
     },
+    "archive": {
+        "exclude": [
+            ".editorconfig",
+            ".gitattributes",
+            ".gitignore",
+            ".github",
+            ".nvmrc",
+            ".prettierignore",
+            ".stylelintrc",
+            ".yarnclean",
+            "CODE_OF_CONDUCT.md",
+            "package.json"
+        ]
+    },
     "autoload": {
         "psr-4": {
             "Jonnitto\\ImagesInARow\\": "Classes"
