@@ -11,8 +11,6 @@
             editorOptions:
               multiple: true
               accept: 'image/*'
-              features:
-                mediaBrowser: false
   options:
     template:
       childNodes:
