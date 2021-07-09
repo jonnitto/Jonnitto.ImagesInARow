@@ -1,53 +1,57 @@
-prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Neos:ContentCollection) {
+prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Neos:ContentComponent) {
+    contentElement = true
+
+    lazy = ${Configuration.setting('Jonnitto.ImagesInARow.lazy')}
+    renderAsPicture = ${Configuration.setting('Jonnitto.ImagesInARow.renderAsPicture')}
     baseWidth = ${Configuration.setting('Jonnitto.ImagesInARow.baseWidth')}
     container = ${Configuration.setting('Jonnitto.ImagesInARow.container')}
-    nodePath = ''
-
+    gutter = ${Configuration.setting('Jonnitto.ImagesInARow.gutter')}
     childCount = ${q(node).children('[instanceof Jonnitto.ImagesInARow:Image]').count()}
-    dimensionsWidth = ${this.childCount ? this.baseWidth / this.childCount : this.baseWidth}
+    counter = Neos.Fusion:Reduce {
+        items = ${q(node).children('[instanceof Jonnitto.ImagesInARow:Image]')}
+        itemReducer = Neos.Fusion:Value {
+            initialValue = 0
+            image = ${q(item).property('image')}
+            ratio = ${this.image && this.image.height ? (this.image.width / this.image.height) : 1.5}
+            value = ${carry + this.ratio}
+        }
+    }
+    dimensionsWidth = ${this.childCount ? (this.baseWidth - (this.childCount - 1) * this.gutter) / this.counter : this.baseWidth}
 
-    contentElement = true
-    namespace = 'jonnitto-imagesinarow'
+    containerClass = ${[BEM.modifier('jonnitto-imagesinarow', 'container'), Type.isString(this.container) ? this.container : null]}
+    class = ${this.container ? 'jonnitto-imagesinarow__row' : BEM.modifier('jonnitto-imagesinarow', 'row')}
+    style = ${'display:flex;margin-left:-' + this.gutter / 2 + 'px;margin-right:-' + this.gutter / 2 + 'px'}
+    warning = ${node.context.inBackend ? Translation.translate('noImages', 'Please add some images', [], 'NodeTypes/Container', 'Jonnitto.ImagesInARow') : null}
+
+    @if.hasChildren = ${this.childCount || node.context.inBackend}
+
+    renderer = afx`
+        <Carbon.Eel:Tag tagName={props.container ? 'div' : null} attributes.class={props.containerClass}>
+            <div data-warning={props.warning} class={props.class} style={props.style}>
+                <Neos.Neos:ContentCollectionRenderer />
+            </div>
+        </Carbon.Eel:Tag>
+    `
 
     @context {
-        container = ${this.container}
-        dimensionsWidth = ${this.dimensionsWidth}
         contentElement = ${this.contentElement}
-        namespace = ${this.namespace}
+        baseWidth = ${this.baseWidth}
+        gutter = ${this.gutter}
+        dimensionsWidth = ${this.dimensionsWidth}
+        lazy = ${this.lazy}
+        renderAsPicture = ${this.renderAsPicture}
     }
-
-    attributes{
-        data-warning = ${node.context.inBackend ? Translation.translate('noImages', 'Please add some images', [], 'NodeTypes/Container', 'Jonnitto.ImagesInARow') : false}
-        class = Neos.Fusion:RawArray {
-            namespace = ${container || node.context.inBackend ? false : namespace}
-            row = ${BEM.string(namespace, 'row')}
-        }
-    }
-
-    @process {
-        containerWrapping = Neos.Fusion:Tag {
-            @if.needWrapping = ${container || node.context.inBackend}
-            attributes.class = Neos.Fusion:RawArray {
-                namespace = ${namespace}
-                imagesinarow = ${container ? BEM.string(namespace, 'container') : false}
-                container = ${Type.isString(container) ? container : false}
-            }
-            content = ${value}
-        }
-        contentElementWrapping {
-            @if.contentElementWrapping = ${contentElement}
-            expression = Neos.Neos:ContentElementWrapping
-            @position = 'end 999999999'
-        }
-    }
-    @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\NodeWrappingHandler'
-    
+    @process.contentElementWrapping.@if.contentElementWrapping = ${contentElement}
     @cache {
         mode = 'cached'
-        entryIdentifier.node = ${node}
-        entryTags {
-            1 = ${Neos.Caching.nodeTag(node)}
-            2 = ${Neos.Caching.descendantOfTag(node)}
+        entryIdentifier {
+            collection = ${node}
         }
+        entryTags {
+            1 = ${Neos.Caching.descendantOfTag(node)}
+            2 = ${Neos.Caching.nodeTag(node)}
+        }
+        maximumLifetime = ${q(node).context({'invisibleContentShown': true}).children().cacheLifetime()}
     }
+    @exceptionHandler = 'Neos\\Neos\\Fusion\\ExceptionHandlers\\NodeWrappingHandler'
 }

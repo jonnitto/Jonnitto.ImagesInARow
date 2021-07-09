@@ -1,0 +1,7 @@
+Jonnitto:
+  ImagesInARow:
+    baseWidth: 800
+    gutter: 10
+    container: false
+    lazy: false
+    renderAsPicture: true

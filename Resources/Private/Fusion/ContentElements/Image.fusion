@@ -1,25 +1,30 @@
 prototype(Jonnitto.ImagesInARow:Image) < prototype(Neos.Neos:ContentComponent) {
-    asset = ${q(node).property('image')}
-    ratio = ${this.asset && this.asset.height ? (this.asset.width / this.asset.height) : 1}
-    baseMaxWith = ${Configuration.setting('Jonnitto.ImagesInARow.baseWidth')}
-    maximumWidth = ${dimensionsWidth && this.asset ? Math.ceil(dimensionsWidth * this.ratio) : this.baseMaxWith}
-    maximumWidth.@process.maximumWidthFromBase = ${value > this.baseMaxWith ? this.baseMaxWith : value}
+    image = ${q(node).property('image')}
+    ratio = ${this.image && this.image.height ? (this.image.width / this.image.height) : 1.5}
+    width = ${dimensionsWidth ? Math.ceil(dimensionsWidth * this.ratio) : baseWidth}
+    width.@process.maximumWidthFromBase = ${Math.min(value, baseWidth)}
+
     alternativeText = ${q(node).property('alternativeText')}
     title = ${q(node).property('title')}
     link = ${q(node).property('link')}
     lightbox = ${q(node).property('lightbox')}
-    caption = ${q(node).property('caption')}
-    hasLinkOrLightox = ${node.context.live && (props.link || props.lightbox)}
+    lightboxCaption = ${q(node).property('caption')}
 
-    renderer = Neos.Fusion:Augmenter {
-        class = 'jonnitto-imagesinarow__image'
-        style = ${'flex:' + props.ratio + ' 1 0%;'}
-        content = Carbon.Image:Tag {
-            @apply.props = ${props}
-            @process.wrap = Neos.Fusion:Tag {
-                @if.hasNoLinkOrLightox = ${node.context.live && (props.link || props.lightbox) ? false : true}
-                content = ${value}
-            }
-        }
+    imageSourceSettings = Neos.Fusion:DataStructure {
+        dummyBaseWidth = 300
+        dummyBaseHeight = 200
+        dummyText = ${Translation.translate('ui.label', 'Image', [], 'NodeTypes/Image', 'Jonnitto.ImagesInARow') }
     }
+
+    gutter = ${gutter}
+    lazy = ${lazy}
+    type = ${renderAsPicture ? 'picture' : 'image'}
+    srcset = '1x,2x'
+    style = 'width:100%;max-width:none;height:auto;display:block;object-fit:fill;'
+
+    renderer = afx`
+        <Neos.Fusion:Augmenter class='jonnitto-imagesinarow__image' style={'flex:' + props.ratio + ' 1 0%;margin:' + props.gutter / 2 + 'px;padding:0;display:block;max-width: 100%;'}>
+            <Carbon.Image:Component.Case {...props} />
+        </Neos.Fusion:Augmenter>
+    `
 }
