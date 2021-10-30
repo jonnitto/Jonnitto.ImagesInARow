@@ -7,14 +7,7 @@
     "type": "git",
     "url": "git://github.com/jonnitto/Jonnitto.ImagesInARow.git"
   },
-  "author": "Jon Uhlmann <me@jonnitto.ch> (https://jonnitto.ch)",
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env"
-      ]
-    ]
-  },
+  "author": "Jon Uhlmann <hello@uhlmann.pro> (https://www.uhlmann.pro)",
   "browserslist": [
     "> 0.5%",
     "last 2 versions",
@@ -42,11 +35,12 @@
     "start": "yarn build"
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.5",
-    "cssnano": "^4.1.10",
-    "postcss": "^8.2.9",
-    "postcss-assets": "^5.0.0",
-    "postcss-cli": "^8.3.1",
-    "postcss-nested": "^5.0.5"
-  }
+    "autoprefixer": "^10.4.0",
+    "cssnano": "^5.0.8",
+    "postcss": "^8.3.11",
+    "postcss-assets": "^6.0.0",
+    "postcss-cli": "^9.0.1",
+    "postcss-nested": "^5.0.6"
+  },
+  "dependencies": {}
 }
