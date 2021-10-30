@@ -1,8 +1,10 @@
-.jonnitto-imagesinarow__row.jonnitto-imagesinarow__row:empty {
+.jonnitto-imagesinarow__row.jonnitto-imagesinarow__row:empty,
+.jonnitto-imagesinarow--row.jonnitto-imagesinarow--row:empty {
   cursor: pointer;
   justify-content: flex-end;
   align-items: center;
-  margin: x 0;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
   display: flex;
 
   &::before,
@@ -20,7 +22,8 @@
   &::after {
     content: "";
     background: inline("img.svg") center no-repeat;
-    size: 2em;
+    width: 2em;
+    height: 2em;
   }
 
   &:hover {
@@ -40,23 +43,5 @@
 
   &[class*="style__markHoveredNodeAsHovered"] {
     z-index: 2;
-  }
-}
-
-@keyframes empty-jonnitto-imagesinarow {
-  0%,
-  25%,
-  100% {
-    transform: translateY(0);
-  }
-
-  5%,
-  15% {
-    transform: translateY(-4px);
-  }
-
-  10%,
-  20% {
-    transform: translateY(4px);
   }
 }
