@@ -7,15 +7,15 @@
     "authors": [
         {
             "name": "Jon Uhlmann",
-            "email": "me@jonnitto.ch",
-            "homepage": "https://twitter.com/jonnitto",
+            "email": "hello@uhlmann.pro",
+            "homepage": "https://www.uhlmann.pro",
             "role": "Developer"
         }
     ],
     "require": {
         "neos/neos": "~4.3 || ~5.0 || ~7.0",
         "flowpack/nodetemplates": "^1.0",
-        "carbon/eel": "^1.7 || dev-master",
+        "carbon/eel": "^1.7 || ^2.0 || dev-master",
         "carbon/image": "^3.0 || dev-master",
         "carbon/includeassets": "^3.5 || ^4.0 || ^5.0 || dev-master"
     },
@@ -39,7 +39,6 @@
         }
     },
     "extra": {
-        "marketplace-account": "me@jonnitto.ch",
         "installer-name": "Jonnitto.ImagesInARow",
         "neos": {
             "package-key": "Jonnitto.ImagesInARow"
