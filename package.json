@@ -31,16 +31,15 @@
     ]
   },
   "scripts": {
-    "build": "postcss Resources/Private/Assets/Backend.pcss --use postcss-nested postcss-assets autoprefixer cssnano --no-map --output Resources/Private/Templates/InlineAssets/Backend.css",
-    "start": "yarn build"
+    "build": "postcss Resources/Private/Assets/*.pcss --use postcss-nested postcss-assets autoprefixer cssnano --no-map --ext css --dir Resources/Private/Templates/InlineAssets",
+    "start": "pnpm install && pnpm build"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
-    "cssnano": "^5.0.8",
+    "cssnano": "^6.0.2",
     "postcss": "^8.3.11",
     "postcss-assets": "^6.0.0",
-    "postcss-cli": "^9.0.1",
-    "postcss-nested": "^5.0.6"
-  },
-  "dependencies": {}
+    "postcss-cli": "^11.0.0",
+    "postcss-nested": "^6.0.1"
+  }
 }
