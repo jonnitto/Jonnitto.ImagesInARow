@@ -2,7 +2,6 @@
   superTypes:
     'Neos.Neos:Content': true
     'Carbon.Image:Image': true
-    'Carbon.Image:Title': true
     'Carbon.Image:AlternativeText': true
     'Carbon.Image:Lightbox': true
     'Carbon.Image:Caption': true

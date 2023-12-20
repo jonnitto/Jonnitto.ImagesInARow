@@ -5,7 +5,6 @@ prototype(Jonnitto.ImagesInARow:Image) < prototype(Neos.Neos:ContentComponent) {
     width.@process.maximumWidthFromBase = ${Math.min(value, baseWidth)}
 
     alternativeText = ${q(node).property('alternativeText')}
-    title = ${q(node).property('title')}
     link = ${q(node).property('link')}
     lightbox = ${q(node).property('lightbox')}
     lightboxCaption = ${q(node).property('caption')}
@@ -16,15 +15,17 @@ prototype(Jonnitto.ImagesInARow:Image) < prototype(Neos.Neos:ContentComponent) {
         dummyText = ${Translation.translate('ui.label', 'Image', [], 'NodeTypes/Image', 'Jonnitto.ImagesInARow') }
     }
 
-    gutter = ${gutter}
     lazy = ${lazy}
-    type = ${renderAsPicture ? 'picture' : 'image'}
+    renderAsPicture = ${renderAsPicture}
     srcset = '1x,2x'
-    style = 'width:100%;max-width:none;height:auto;display:block;object-fit:fill;'
 
     renderer = afx`
-        <Neos.Fusion:Augmenter class='jonnitto-imagesinarow__image' style={'flex:' + props.ratio + ' 1 0%;margin:' + props.gutter / 2 + 'px;padding:0;display:block;max-width: 100%;'}>
-            <Carbon.Image:Component.Case {...props} />
+        <Neos.Fusion:Augmenter
+            class='jonnitto-imagesinarow__image'
+            style={'--ratio:' + props.ratio}
+        >
+            <Carbon.Image:Component.Image @if={!props.renderAsPicture} {...props} />
+            <Carbon.Image:Component.Picture @if={props.renderAsPicture} {...props} />
         </Neos.Fusion:Augmenter>
     `
 }

@@ -20,15 +20,18 @@ prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Neos:ContentComponen
 
     containerClass = ${[BEM.modifier('jonnitto-imagesinarow', 'container'), Type.isString(this.container) ? this.container : null]}
     class = ${this.container ? 'jonnitto-imagesinarow__row' : BEM.modifier('jonnitto-imagesinarow', 'row')}
-    style = ${'display:flex;margin-left:-' + this.gutter / 2 + 'px;margin-right:-' + this.gutter / 2 + 'px'}
+    style = ${'--gutter:' + this.gutter + 'px'}
     warning = ${node.context.inBackend ? Translation.translate('noImages', 'Please add some images', [], 'NodeTypes/Container', 'Jonnitto.ImagesInARow') : null}
 
-    @if.hasChildren = ${this.childCount || node.context.inBackend}
+    inBackend = ${node.context.inBackend}
+    @if.hasChildren = ${this.childCount || this.inBackend}
 
     renderer = afx`
         <Carbon.Eel:Tag tagName={props.container ? 'div' : null} attributes.class={props.containerClass}>
             <div data-warning={props.warning} class={props.class} style={props.style}>
                 <Neos.Neos:ContentCollectionRenderer />
+                <style @if={props.inBackend} data-slipstream>{StaticResource.content('Jonnitto.ImagesInARow', 'Private/Templates/InlineAssets/Backend.css')}</style>
+                <style data-slipstream>{StaticResource.content('Jonnitto.ImagesInARow', 'Private/Templates/InlineAssets/Frontend.css')}</style>
             </div>
         </Carbon.Eel:Tag>
     `
@@ -36,7 +39,6 @@ prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Neos:ContentComponen
     @context {
         contentElement = ${this.contentElement}
         baseWidth = ${this.baseWidth}
-        gutter = ${this.gutter}
         dimensionsWidth = ${this.dimensionsWidth}
         lazy = ${this.lazy}
         renderAsPicture = ${this.renderAsPicture}

@@ -4,4 +4,4 @@ Jonnitto:
     gutter: 10
     container: false
     lazy: false
-    renderAsPicture: true
+    renderAsPicture: false

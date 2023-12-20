@@ -1,7 +1,0 @@
-Carbon:
-  IncludeAssets:
-    Packages:
-      "Jonnitto.ImagesInARow":
-        Package: Jonnitto.ImagesInARow
-        Backend:
-          Head: Backend.css[inline]

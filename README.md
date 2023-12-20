@@ -37,6 +37,5 @@ The `--no-update` command prevent the automatic update of the dependencies. Afte
 [stargazers]: https://github.com/jonnitto/Jonnitto.ImagesInARow/stargazers
 [subscription]: https://github.com/jonnitto/Jonnitto.ImagesInARow/subscription
 [followers]: https://github.com/jonnitto/followers
-[license]: LICENSE
 [images in a row]: https://user-images.githubusercontent.com/4510166/33304401-e0986e48-d408-11e7-86c4-02bcd24d74cd.jpg
 [node template example]: https://user-images.githubusercontent.com/4510166/34143857-2a05c18e-e48f-11e7-9379-e9b5f0950369.gif

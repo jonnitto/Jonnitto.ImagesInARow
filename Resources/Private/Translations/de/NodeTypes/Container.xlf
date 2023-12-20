@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.2" 
+<xliff version="1.2"
     xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file original="" product-name="Jonnitto.ImagesInARow" source-language="de" datatype="plaintext">
         <body>
@@ -8,9 +8,6 @@
             </trans-unit>
             <trans-unit id="images" xml:space="preserve">
                 <source>Bilder</source>
-            </trans-unit>
-            <trans-unit id="items" xml:space="preserve">
-                <source>Wie viele Bilder sollen erstellt werden?</source>
             </trans-unit>
             <trans-unit id="noImages" xml:space="preserve">
                 <source>Bitte fügen Sie Bilder ein</source>

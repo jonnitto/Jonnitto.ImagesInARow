@@ -1,0 +1,27 @@
+.jonnitto-imagesinarow__row,
+.jonnitto-imagesinarow--row {
+  display: flex;
+  margin-left: calc(var(--gutter, 10px) / -2);
+  margin-right: calc(var(--gutter, 10px) / -2);
+}
+
+.jonnitto-imagesinarow__image {
+  flex: var(--ratio, 1.5) 1 0%;
+  margin: calc(var(--gutter, 10px) / 2);
+  padding: 0;
+  display: block;
+  max-width: 100%;
+}
+
+.jonnitto-imagesinarow__image > a {
+  display: block;
+}
+
+.jonnitto-imagesinarow__image img,
+.jonnitto-imagesinarow__image.img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
