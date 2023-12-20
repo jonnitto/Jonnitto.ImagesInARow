@@ -1,4 +1,4 @@
-'Jonnitto.ImagesInARow:Mixin.CreationDialog.Assets':
+'Jonnitto.ImagesInARow:Mixin.CreationDialog':
   abstract: true
   ui:
     creationDialog:
