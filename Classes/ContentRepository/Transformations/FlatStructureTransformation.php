@@ -20,8 +20,12 @@ class FlatStructureTransformation extends AbstractTransformation
      */
     public function isTransformable(NodeData $node)
     {
-        $numberOfChildNodes = $node->getNumberOfChildNodes('Neos.Neos:ContentCollection', $node->getWorkspace(), $node->getDimensions());
-        return ($numberOfChildNodes > 0);
+        $numberOfChildNodes = $node->getNumberOfChildNodes(
+            'Neos.Neos:ContentCollection',
+            $node->getWorkspace(),
+            $node->getDimensions()
+        );
+        return $numberOfChildNodes > 0;
     }
 
     /**
@@ -31,13 +35,20 @@ class FlatStructureTransformation extends AbstractTransformation
     public function execute(NodeData $node)
     {
         $contentContext = $this->createContentContext('live', []);
-        $containerNode = $contentContext->getNodeByIdentifier($node->getIdentifier());
-        $contentCollections = $containerNode->getChildNodes('Neos.Neos:ContentCollection');
+        $containerNode = $contentContext->getNodeByIdentifier(
+            $node->getIdentifier()
+        );
+        $contentCollections = $containerNode->getChildNodes(
+            'Neos.Neos:ContentCollection'
+        );
 
         foreach ($contentCollections as $contentCollection) {
             /** @var NodeInterface $contentCollection */
             if ($contentCollection->hasChildNodes()) {
-                $this->moveChildNodes($contentCollection->getChildNodes(), $containerNode);
+                $this->moveChildNodes(
+                    $contentCollection->getChildNodes(),
+                    $containerNode
+                );
                 $contentCollection->remove();
             }
         }

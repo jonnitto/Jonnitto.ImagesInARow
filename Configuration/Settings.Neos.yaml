@@ -4,7 +4,7 @@ Neos:
       translation:
         autoInclude:
           Jonnitto.ImagesInARow:
-            - "NodeTypes/*"
+            - 'NodeTypes/*'
     fusion:
       autoInclude:
         Jonnitto.ImagesInARow: true
