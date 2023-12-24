@@ -1,2 +1,5 @@
 composer.json
 *.noLinter.*
+LICENSE
+pnpm-lock.yaml
+Resources/Private/Templates/InlineAssets
