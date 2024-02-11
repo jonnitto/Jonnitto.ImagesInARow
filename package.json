@@ -14,13 +14,13 @@
     "watch": "postcss Resources/Private/Assets/*.pcss --use postcss-nested postcss-assets autoprefixer cssnano --no-map --ext css --dir Resources/Private/Templates/InlineAssets --watch"
   },
   "devDependencies": {
-    "@prettier/plugin-php": "^0.22.1",
-    "autoprefixer": "^10.4.0",
-    "cssnano": "^6.0.2",
-    "postcss": "^8.3.11",
+    "@prettier/plugin-php": "^0.22.2",
+    "autoprefixer": "^10.4.17",
+    "cssnano": "^6.0.3",
+    "postcss": "^8.4.35",
     "postcss-assets": "^6.0.0",
     "postcss-cli": "^11.0.0",
     "postcss-nested": "^6.0.1",
-    "prettier": "^3.1.1"
+    "prettier": "^3.2.5"
   }
 }
