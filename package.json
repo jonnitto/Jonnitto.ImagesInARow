@@ -9,9 +9,9 @@
   },
   "author": "Jon Uhlmann <hello@uhlmann.pro> (https://www.uhlmann.pro)",
   "scripts": {
-    "build": "postcss Resources/Private/Assets/*.pcss --use postcss-nested postcss-assets autoprefixer cssnano --no-map --ext css --dir Resources/Private/Templates/InlineAssets",
-    "dev": "postcss Resources/Private/Assets/*.pcss --use postcss-nested postcss-assets autoprefixer --no-map --ext css --dir Resources/Private/Templates/InlineAssets",
-    "watch": "postcss Resources/Private/Assets/*.pcss --use postcss-nested postcss-assets autoprefixer cssnano --no-map --ext css --dir Resources/Private/Templates/InlineAssets --watch"
+    "build": "postcss Resources/Private/Assets/*.pcss --use postcss-nested postcss-assets autoprefixer cssnano --no-map --ext css --dir Resources/Public/Styles",
+    "dev": "postcss Resources/Private/Assets/*.pcss --use postcss-nested postcss-assets autoprefixer --no-map --ext css --dir Resources/Public/Styles",
+    "watch": "postcss Resources/Private/Assets/*.pcss --use postcss-nested postcss-assets autoprefixer cssnano --no-map --ext css --dir Resources/Public/Styles --watch"
   },
   "devDependencies": {
     "@prettier/plugin-php": "^0.22.2",

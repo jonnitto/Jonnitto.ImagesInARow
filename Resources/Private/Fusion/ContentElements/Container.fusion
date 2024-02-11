@@ -26,12 +26,19 @@ prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Neos:ContentComponen
     inBackend = ${node.context.inBackend}
     @if.hasChildren = ${this.childCount || this.inBackend}
 
+    // @internal Move to @private if minimal Neos requirement is 8.3 or higher
+    _fileLoader = ${{inBackend: this.inBackend}}
+    _fileLoader.@process.convert = Carbon.FileLoader:Component {
+        package = 'Jonnitto.ImagesInARow'
+        css = ${[value.inBackend ? 'Backend.css' : null, 'Frontend.css']}
+    }
+    _fileLoaderAsAttributes = ${!Type.isString(this._fileLoader)}
+
     renderer = afx`
         <Carbon.Eel:Tag tagName={props.container ? 'div' : null} attributes.class={props.containerClass}>
-            <div data-warning={props.warning} class={props.class} style={props.style}>
+            <div data-warning={props.warning} class={props.class} style={props.style} {...(props._fileLoaderAsAttributes ? props._fileLoader : {})} >
                 <Neos.Neos:ContentCollectionRenderer />
-                <style @if={props.inBackend} data-slipstream>{StaticResource.content('Jonnitto.ImagesInARow', 'Private/Templates/InlineAssets/Backend.css')}</style>
-                <style data-slipstream>{StaticResource.content('Jonnitto.ImagesInARow', 'Private/Templates/InlineAssets/Frontend.css')}</style>
+                {props._fileLoaderAsAttributes ? '' : props._fileLoader}
             </div>
         </Carbon.Eel:Tag>
     `
