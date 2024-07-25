@@ -4,6 +4,7 @@
     'Carbon.Image:Image': true
     'Carbon.Image:AlternativeText': true
     'Carbon.Image:Lightbox': true
+    'Carbon.Image:Caption': true
     'Carbon.Image:Link': true
     'Carbon.Image:BackendLabel': true
   ui:

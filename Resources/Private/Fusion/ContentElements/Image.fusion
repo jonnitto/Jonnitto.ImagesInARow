@@ -7,6 +7,7 @@ prototype(Jonnitto.ImagesInARow:Image) < prototype(Neos.Neos:ContentComponent) {
     alternativeText = ${q(node).property('alternativeText')}
     link = ${q(node).property('link')}
     lightbox = ${q(node).property('lightbox')}
+    lightboxCaption = ${q(node).property('caption')}
 
     imageSourceSettings = Neos.Fusion:DataStructure {
         dummyBaseWidth = 300
