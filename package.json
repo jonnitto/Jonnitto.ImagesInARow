@@ -8,19 +8,20 @@
     "url": "git://github.com/jonnitto/Jonnitto.ImagesInARow.git"
   },
   "author": "Jon Uhlmann <hello@uhlmann.pro> (https://www.uhlmann.pro)",
+  "packageManager": "pnpm@10.9.0+sha512.0486e394640d3c1fb3c9d43d49cf92879ff74f8516959c235308f5a8f62e2e19528a65cdc2a3058f587cde71eba3d5b56327c8c33a97e4c4051ca48a10ca2d5f",
   "scripts": {
     "build": "postcss Resources/Private/Assets/*.pcss --use postcss-nested postcss-assets autoprefixer cssnano --no-map --ext css --dir Resources/Public/Styles",
     "dev": "postcss Resources/Private/Assets/*.pcss --use postcss-nested postcss-assets autoprefixer --no-map --ext css --dir Resources/Public/Styles",
     "watch": "postcss Resources/Private/Assets/*.pcss --use postcss-nested postcss-assets autoprefixer cssnano --no-map --ext css --dir Resources/Public/Styles --watch"
   },
   "devDependencies": {
-    "@prettier/plugin-php": "^0.22.2",
-    "autoprefixer": "^10.4.19",
-    "cssnano": "^7.0.4",
-    "postcss": "^8.4.40",
+    "@prettier/plugin-php": "^0.22.4",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.0.6",
+    "postcss": "^8.5.3",
     "postcss-assets": "^6.0.0",
-    "postcss-cli": "^11.0.0",
-    "postcss-nested": "^6.2.0",
-    "prettier": "^3.3.3"
+    "postcss-cli": "^11.0.1",
+    "postcss-nested": "^7.0.2",
+    "prettier": "^3.5.3"
   }
 }
