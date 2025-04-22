@@ -21,24 +21,24 @@ prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Neos:ContentComponen
     containerClass = ${[BEM.modifier('jonnitto-imagesinarow', 'container'), Type.isString(this.container) ? this.container : null]}
     class = ${this.container ? 'jonnitto-imagesinarow__row' : BEM.modifier('jonnitto-imagesinarow', 'row')}
     style = ${'--gutter:' + this.gutter + 'px'}
-    warning = ${node.context.inBackend ? Translation.translate('noImages', 'Please add some images', [], 'NodeTypes/Container', 'Jonnitto.ImagesInARow') : null}
-
     inBackend = ${node.context.inBackend}
+    warning = ${this.inBackend ? Translation.translate('noImages', 'Please add some images', [], 'NodeTypes/Container', 'Jonnitto.ImagesInARow') : null}
+
     @if.hasChildren = ${this.childCount || this.inBackend}
 
-    // @internal Move to @private if minimal Neos requirement is 8.3 or higher
-    _fileLoader = ${{inBackend: this.inBackend}}
-    _fileLoader.@process.convert = Carbon.FileLoader:Component {
-        package = 'Jonnitto.ImagesInARow'
-        css = ${[value.inBackend ? 'Backend.css' : null, 'Frontend.css']}
+    @private {
+        fileLoader = Carbon.FileLoader:Component {
+            package = 'Jonnitto.ImagesInARow'
+            css = ${[props.inBackend ? 'Backend.css' : null, 'Frontend.css']}
+        }
+        fileLoaderAsAttributes = ${!Type.isString(private.fileLoader)}
     }
-    _fileLoaderAsAttributes = ${!Type.isString(this._fileLoader)}
 
     renderer = afx`
         <Carbon.Eel:Tag tagName={props.container ? 'div' : null} attributes.class={props.containerClass}>
-            <div data-warning={props.warning} class={props.class} style={props.style} {...(props._fileLoaderAsAttributes ? props._fileLoader : {})} >
+            <div data-warning={props.warning} class={props.class} style={props.style} {...(private.fileLoaderAsAttributes ? private.fileLoader : {})} >
                 <Neos.Neos:ContentCollectionRenderer />
-                {props._fileLoaderAsAttributes ? '' : props._fileLoader}
+                {private.fileLoaderAsAttributes ? '' : private.fileLoader}
             </div>
         </Carbon.Eel:Tag>
     `

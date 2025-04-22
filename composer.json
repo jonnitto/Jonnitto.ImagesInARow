@@ -13,11 +13,11 @@
         }
     ],
     "require": {
-        "neos/neos": "^7.3 || ^8.0",
+        "neos/neos": "^8.3",
         "flowpack/nodetemplates": "^1.0 || ^2.0",
-        "carbon/eel": "^2.0 || dev-master",
+        "carbon/eel": "^2.0",
         "carbon/fileloader": "^0.1",
-        "carbon/image": "^3.0 || ^4.0 || ^5.0 || dev-master",
+        "carbon/image": "^4.4 || ^5.0",
         "sitegeist/slipstream": "^2.1"
     },
     "archive": {
