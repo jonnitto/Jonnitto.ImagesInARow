@@ -23,11 +23,13 @@ prototype(Jonnitto.ImagesInARow:Container) < prototype(Neos.Neos:ContentComponen
     style = ${'--gutter:' + this.gutter + 'px'}
     inBackend = ${node.context.inBackend}
     warning = ${this.inBackend ? Translation.translate('noImages', 'Please add some images', [], 'NodeTypes/Container', 'Jonnitto.ImagesInARow') : null}
+    fileLoader = true
 
     @if.hasChildren = ${this.childCount || this.inBackend}
 
     @private {
         fileLoader = Carbon.FileLoader:Component {
+            @if.set = ${props.fileLoader}
             package = 'Jonnitto.ImagesInARow'
             css = ${[props.inBackend ? 'Backend.css' : null, 'Frontend.css']}
         }
